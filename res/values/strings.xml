@@ -9,8 +9,9 @@
     <string name="godmode">God Mode</string>
     <string name="button_continue_apps">Continue to apps</string>
     <string name="button_continue_uninstall">Continue to uninstall page</string>
-	<string name="uninstalled_uninstall">App is uninstalled. Market version will successfully install.</string>
-	<string name="installed_uninstall">App is installed. Please uninstall before installing from market.</string>
-	<string name="uninstalled_apps">Click to launch Market link.</string>
-	<string name="installed_apps">Please go back and uninstall current versions before continuing.</string>
+    <string name="uninstalled_uninstall">App is uninstalled. Market version will successfully install.</string>
+    <string name="installed_uninstall">App is installed. Please uninstall before installing from market.</string>
+    <string name="uninstalled_apps">Click to launch Market link.</string>
+    <string name="installed_apps">Please go back and uninstall current versions before continuing.</string>
+    <string name="warning_uninstall">Your phone will now remove the old verison and reboot to finalize the process</string>
 </resources>                                                
