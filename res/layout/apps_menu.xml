@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.t3hh4xx0r.setup" >
+     
+           <com.t3hh4xx0r.setup.IconPreferenceScreenRight
+            settings:icon="@drawable/ic_launcher"
+            android:key="wallpapers"
+            android:id="@+id/wallpapers"
+            android:title="@string/wallpapers"
+            android:enabled="false"
+            android:summary="@string/installed_apps" >
+          </com.t3hh4xx0r.setup.IconPreferenceScreenRight>
+
+           <com.t3hh4xx0r.setup.IconPreferenceScreenLeft
+            settings:icon="@drawable/ic_launcher"
+            android:key="godmode"
+            android:id="@+id/godmode"            
+            android:title="@string/godmode" 
+            android:enabled="false"       
+            android:summary="@string/installed_apps" >
+          </com.t3hh4xx0r.setup.IconPreferenceScreenLeft>
+
+           <com.t3hh4xx0r.setup.IconPreferenceScreenRight
+            settings:icon="@drawable/ic_launcher"
+            android:key="launcher"
+            android:id="@+id/launcher"
+            android:title="@string/launcher"
+            android:enabled="false"
+            android:summary="@string/installed_apps" >
+          </com.t3hh4xx0r.setup.IconPreferenceScreenRight>
+</PreferenceScreen>
+           
+           

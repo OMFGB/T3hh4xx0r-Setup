@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">     
+         <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:id="@+id/header_supported"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/header_supported"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/apps_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header_supported"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="27dp"
+                android:text="@string/button_continue_apps" />
+
+            <Button
+                android:id="@+id/uninstall_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/apps_button"
+                android:layout_centerHorizontal="true"
+                android:text="@string/button_continue_uninstall" />
+
+        </RelativeLayout>
+</LinearLayout>
