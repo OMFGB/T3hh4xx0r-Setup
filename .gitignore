@@ -1,6 +1,7 @@
 gen
 proguard.cfg
 bin
+doc
 project.properties
 .settings/org.eclipse.jdt.core.prefs
 .classpath

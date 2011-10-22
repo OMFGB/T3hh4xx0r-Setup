@@ -7,21 +7,17 @@ import java.io.IOException;
 import com.t3hh4xx0r.setup.IconPreferenceScreenLeft;
 import com.t3hh4xx0r.setup.IconPreferenceScreenRight;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.content.DialogInterface;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.widget.Toast;
 
 
 public class UninstallMenu extends PreferenceActivity {
 	private IconPreferenceScreenLeft mWallpapers;
 	private IconPreferenceScreenRight mGodMode;
 	private IconPreferenceScreenLeft mLauncher;
-	Context mContext;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -29,7 +25,8 @@ public class UninstallMenu extends PreferenceActivity {
 		addPreferencesFromResource(R.layout.uninstall_menu);
 		mGodMode = (IconPreferenceScreenRight) findPreference("godmode");		
 		mWallpapers = (IconPreferenceScreenLeft) findPreference("wallpapers");
-
+		mLauncher = (IconPreferenceScreenLeft) findPreference("launcher");
+		
 		File wallpapersf = new File("/system/app/Wallpapers.apk");
 		if (!wallpapersf.exists()) {
 			mWallpapers.setEnabled(false);
@@ -54,7 +51,8 @@ public class UninstallMenu extends PreferenceActivity {
 		if (preference == mWallpapers) {
 			File wallpapersf = new File("/system/app/Wallpapers.apk");
 			if (wallpapersf.exists()) {
-                            warningBox("Warning", "Your device will now remove the currently installed version of our app and reboot to finish the process");
+                Toast pieceToast = Toast.makeText(getApplicationContext(), "Rebooting", Toast.LENGTH_SHORT);
+                pieceToast.show();
 			    Thread cmdThread = new Thread(){
 				    @Override
 				    public void run() {
@@ -62,11 +60,12 @@ public class UninstallMenu extends PreferenceActivity {
 					DataOutputStream out = null;
 					Process p = null;
 					try {
-		                		p = run.exec("su");
+		                p = run.exec("su");
 						out = new DataOutputStream(p.getOutputStream());
-						out.writeBytes("busybox remount\n");				
-						out.writeBytes("busybox rm /system/app/Wallpapers.apk\n");				
-                                                out.writeBytes("busybox reboot\n");
+						out.writeBytes("busybox mount -o remount rw /system\n");				
+						out.writeBytes("busybox rm /system/app/Wallpapers.apk\n");	
+						out.writeBytes("busybox mount -o remount ro /system\n");										
+                        out.writeBytes("reboot\n");
 						out.flush();
 					    } catch (IOException e) {
 						    e.printStackTrace();
@@ -83,8 +82,8 @@ public class UninstallMenu extends PreferenceActivity {
 		if (preference == mGodMode) {
 			File godmodef = new File("/system/app/God_Mode.apk");
 			if (godmodef.exists()) {
-                            warningBox("Warning", "Your device will now remove the currently installed version of our app" + 
-                                        " and reboot to finish the process");
+                Toast pieceToast = Toast.makeText(getApplicationContext(), "Rebooting", Toast.LENGTH_SHORT);
+                pieceToast.show();
 			    Thread cmdThread = new Thread(){
 				    @Override
 				    public void run() {
@@ -92,11 +91,12 @@ public class UninstallMenu extends PreferenceActivity {
 					DataOutputStream out = null;
 					Process p = null;
 					try {
-		                		p = run.exec("su");
+		                p = run.exec("su");
 						out = new DataOutputStream(p.getOutputStream());
-						out.writeBytes("busybox remount\n");				
-						out.writeBytes("busybox rm /system/app/God_Mode.apk\n");				
-                                                out.writeBytes("busybox reboot\n");
+						out.writeBytes("busybox mount -o remount rw /system\n");				
+						out.writeBytes("busybox rm /system/app/God_Mode.apk\n");	
+						out.writeBytes("busybox mount -o remount ro /system\n");										
+                        out.writeBytes("reboot\n");
 						out.flush();
 					    } catch (IOException e) {
 						    e.printStackTrace();
@@ -111,10 +111,10 @@ public class UninstallMenu extends PreferenceActivity {
 			mGodMode.setSummary(R.string.uninstalled_uninstall);
 		}
 		if (preference == mLauncher) {
-			File wallpapersf = new File("/system/app/OMFGB-Launcher.apk");
-			if (wallpapersf.exists()) {
-                            warningBox("Warning", "Your device will now remove the currently installed version of our app" + 
-					" and reboot to finish the process");
+			File launcherf = new File("/system/app/OMFGB-Launcher.apk");
+			if (launcherf.exists()) {
+                Toast pieceToast = Toast.makeText(getApplicationContext(), "Rebooting", Toast.LENGTH_SHORT);
+                pieceToast.show();
 			    Thread cmdThread = new Thread(){
 				    @Override
 				    public void run() {
@@ -122,11 +122,12 @@ public class UninstallMenu extends PreferenceActivity {
 					DataOutputStream out = null;
 					Process p = null;
 					try {
-		                	p = run.exec("su");
+		                p = run.exec("su");
 						out = new DataOutputStream(p.getOutputStream());
-						out.writeBytes("busybox remount\n");				
-						out.writeBytes("busybox rm /system/app/OMFGB-Launcher.apk\n");				
-                                                out.writeBytes("busybox reboot\n");
+						out.writeBytes("busybox mount -o remount rw /system\n");				
+						out.writeBytes("busybox rm /system/app/OMFGB-Launcher.apk\n");	
+						out.writeBytes("busybox mount -o remount ro /system\n");										
+                        out.writeBytes("reboot\n");
 						out.flush();
 					    } catch (IOException e) {
 						    e.printStackTrace();
@@ -142,17 +143,5 @@ public class UninstallMenu extends PreferenceActivity {
 		}
 		return false;
 	}
-
-        public void warningBox(String title, String mymessage) {
-            new AlertDialog.Builder(mContext)
-                .setMessage(mymessage)
-                .setTitle(title)
-                .setCancelable(false)
-                .setPositiveButton("OK",
-                   new DialogInterface.OnClickListener() {
-                      public void onClick(DialogInterface dialog, int whichButton) {}
-                   }) 
-                .show();
-        }
 
 }

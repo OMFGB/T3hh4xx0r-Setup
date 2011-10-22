@@ -3,14 +3,12 @@ package com.t3hh4xx0r.setup;
 import com.t3hh4xx0r.setup.utils.Constants;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 
 public class MainMenu extends Activity {

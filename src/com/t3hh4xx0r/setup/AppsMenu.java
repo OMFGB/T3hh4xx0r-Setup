@@ -34,44 +34,32 @@ public class AppsMenu extends PreferenceActivity {
 			mWallpapers.setSummary(R.string.uninstalled_apps);
 		}
 		
-		File godmodef = new File("/system/app/God_Mode.apk");
+		/**File godmodef = new File("/system/app/God_Mode.apk");
 		if (!godmodef.exists()) {
 			mGodMode.setEnabled(true);
 			mGodMode.setSummary(R.string.uninstalled_apps);
-		}
+		}**/
 		
-		File launcherf = new File("/system/app/OMFGB-Launcher.apk");
+		/**File launcherf = new File("/system/app/OMFGB-Launcher.apk");
 		if (!launcherf.exists()) {
 			mLauncher.setEnabled(true);
 			mLauncher.setSummary(R.string.uninstalled_apps);
-		}
+		}**/
 		
 	}
 	
 	public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
 
 		if (preference == mWallpapers) {
-			Intent marketApp = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=org.linuxmotion.filemanager"));
+			Intent marketApp = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.t3hh4xx0r.wallpapers"));
 			marketApp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
  			try{
 				startActivity(marketApp);
 			}catch(ActivityNotFoundException e){
 				e.printStackTrace();
-				noMarketAlertBox("getName", "Maybe you haven't installed the market");
 			}
 		}
  			return true;	
-		}
-			
-		protected void noMarketAlertBox(String title, String mymessage) {
-			   new AlertDialog.Builder(mContext)
-			      .setMessage(mymessage)
-			      .setTitle(title)
-			      .setCancelable(false)
-			      .setPositiveButton("OK",
-			      new DialogInterface.OnClickListener() {
-			         public void onClick(DialogInterface dialog, int whichButton) {}
-				}) 
-			    .show();
-		    }
+	}
+	
 }
