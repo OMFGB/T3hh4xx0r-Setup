@@ -34,17 +34,17 @@ public class AppsMenu extends PreferenceActivity {
 			mWallpapers.setSummary(R.string.uninstalled_apps);
 		}
 		
-		/**File godmodef = new File("/system/app/God_Mode.apk");
+		File godmodef = new File("/system/app/God_Mode.apk");
 		if (!godmodef.exists()) {
 			mGodMode.setEnabled(true);
 			mGodMode.setSummary(R.string.uninstalled_apps);
-		}**/
+		}
 		
-		/**File launcherf = new File("/system/app/OMFGB-Launcher.apk");
+		File launcherf = new File("/system/app/OMFGB-Launcher.apk");
 		if (!launcherf.exists()) {
 			mLauncher.setEnabled(true);
 			mLauncher.setSummary(R.string.uninstalled_apps);
-		}**/
+		}
 		
 	}
 	
@@ -52,6 +52,23 @@ public class AppsMenu extends PreferenceActivity {
 
 		if (preference == mWallpapers) {
 			Intent marketApp = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.t3hh4xx0r.wallpapers"));
+			marketApp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+ 			try{
+				startActivity(marketApp);
+			}catch(ActivityNotFoundException e){
+				e.printStackTrace();
+			}
+		}
+		if (preference == mLauncher) {
+			Intent marketApp = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.t3hh4xx0r.omfgblauncher"));
+ 			try{
+				startActivity(marketApp);
+			}catch(ActivityNotFoundException e){
+				e.printStackTrace();
+			}
+		}
+		if (preference == mGodMode) {
+			Intent marketApp = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.t3hh4xx0r"));
 			marketApp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
  			try{
 				startActivity(marketApp);
