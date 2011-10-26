@@ -36,7 +36,7 @@ public class MainMenu extends Activity {
 	}
 
 	private OnClickListener mAppsListener = new OnClickListener() {
-		public void onClick(View v) {
+	    public void onClick(View v) {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setClassName("com.t3hh4xx0r.setup","com.t3hh4xx0r.setup.AppsMenu");
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -45,7 +45,7 @@ public class MainMenu extends Activity {
 	};
 	
 	private OnClickListener mUninstallListener = new OnClickListener() {
-		public void onClick(View v) {
+	    public void onClick(View v) {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setClassName("com.t3hh4xx0r.setup","com.t3hh4xx0r.setup.UninstallMenu");
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -54,9 +54,12 @@ public class MainMenu extends Activity {
 	};
 	
 	public void isSupported() {
-		if(!Build.USER.equals("r2doesinc")) {
-			Constants.SUPPORTED = false;
+	   try {
+		if(!Constants.ROM.equals("OMFGB")) {
+		    Constants.SUPPORTED = false;
 		}
-		
+	   } catch (Exception e) {
+                Constants.SUPPORTED = false;
+	   }	
 	}
 }

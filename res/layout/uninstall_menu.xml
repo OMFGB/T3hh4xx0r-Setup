@@ -4,7 +4,7 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.t3hh4xx0r.setup" >
      
            <com.t3hh4xx0r.setup.IconPreferenceScreenLeft
-            settings:icon="@drawable/ic_launcher"
+            settings:icon="@+drawable/wp_icon"
             android:key="wallpapers"
             android:id="@+id/wallpapers"
             android:title="@string/wallpapers"
@@ -12,7 +12,7 @@
            </com.t3hh4xx0r.setup.IconPreferenceScreenLeft>
 
            <com.t3hh4xx0r.setup.IconPreferenceScreenRight
-            settings:icon="@drawable/ic_launcher"
+            settings:icon="@+drawable/gm_icon"
             android:key="godmode"
             android:id="@+id/godmode"            
             android:title="@string/godmode" 
@@ -20,7 +20,7 @@
           </com.t3hh4xx0r.setup.IconPreferenceScreenRight>
 
            <com.t3hh4xx0r.setup.IconPreferenceScreenLeft
-            settings:icon="@drawable/ic_launcher"
+            settings:icon="@+drawable/launcher_icon"
             android:key="launcher"
             android:id="@+id/launcher"
             android:title="@string/launcher"
